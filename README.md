@@ -56,11 +56,11 @@ PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of
         class BkmTest extends CI_Controller {
 
             public function index() {
+
                 $gateway = Omnipay::create('Bkm');
 
-                $gateway->setApiId("im0569328007a12b0c09eb1413802353");
-                $gateway->setSecretKey("im061148300b91d40a48681413802353");
-
+                $gateway->setBank("akbank");
+                $gateway->setMid("7b928290-b6d2-469e-ac10-29eb36b8c1f6");
                 $gateway->setTestMode(TRUE);
 
                 $options = [
@@ -74,8 +74,6 @@ PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of
 
                 $response = $gateway->purchase(
                 [
-                    'installment'   => 2,
-                    'transId'       => '2233333333333333',
                     'amount'        => 10.00,
                     'currency'      => 'TRY',
                     'card'          => $options
