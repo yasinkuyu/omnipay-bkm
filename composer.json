@@ -1,0 +1,43 @@
+{
+    "name": "yasinkuyu/omnipay-bkm",
+    "type": "library",
+    "description": "BKM Express gateway for Omnipay payment processing library",
+    "keywords": [
+        "posnet",
+        "bkm",
+        "sanal pos",
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment"
+    ],
+    "homepage": "https://github.com/yasinkuyu/omnipay-bkm",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yasin Kuyu",
+            "email": "yasinkuyu@gmail.com"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/yasinkuyu/omnipay-bkm/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Bkm\\": "src/"
+        }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}
