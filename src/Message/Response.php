@@ -84,7 +84,7 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
                     children()->resCode;
 
             return $code;
-      } 
+        } 
 
     }
 
@@ -102,7 +102,7 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
                     children()->t;
 
             return $transId;
-      } 
+        } 
         
     }
 

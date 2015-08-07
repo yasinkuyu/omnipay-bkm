@@ -22,9 +22,6 @@ class PurchaseRequest extends AbstractRequest {
     
     public function getData() {
 
-        $this->validate('card');
-        $this->getCard()->validate();
-
         $timestamp = strftime("%Y%m%d-%H:%M:%S", time());
         
         $data = array(
@@ -32,8 +29,8 @@ class PurchaseRequest extends AbstractRequest {
             'sUrl' => "http://local.instore/?success",
             'cUrl' => "http://local.instore/?fail",
             
-            'sAmount' => "78,99",
-            'cAmount' => "5,00", //shipping price
+            'sAmount' => $this->getAmountInteger(),
+            'cAmount' => "", //shipping price
             'instOpst' => array(
                 'bank' => array(
                     'id' => 0046,
@@ -136,7 +133,6 @@ class PurchaseRequest extends AbstractRequest {
             )
         ));
         
-        // echo $document->saveXML(); die();
         $httpResponse = $this->httpClient->post($endpoint, $headers, $document->saveXML())->send();
         
         return $this->response = new Response($this, $httpResponse->getBody());
