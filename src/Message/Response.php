@@ -2,6 +2,7 @@
 
 namespace Omnipay\Bkm\Message;
 
+use SimpleXMLElement;
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\Common\Message\RedirectResponseInterface;
@@ -26,11 +27,17 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
     public function __construct(RequestInterface $request, $data) {
         $this->request = $request;
         try {
-            $this->data = json_decode(strval($data));
+
+            $this->data = new SimpleXMLElement($data);
+
+            $this->data = $this->data->children("S", true)->Body->
+                children("ns2", true)->initializePaymentResponse;
+            
         } catch (\Exception $ex) {
             throw new InvalidResponseException();
         }
-        echo $data;
+        
+        
     }
 
     /**
@@ -39,7 +46,19 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
      * @return bool
      */
     public function isSuccessful() {
-        return true;
+        
+        if(isset($this->data->children()->InitializePaymentWSResponse))
+        {
+             $message = $this->data->
+                children()->InitializePaymentWSResponse->
+                children()->res->
+                children()->resMsg;   
+             
+          return (string) $message === "Success";
+      }else{
+          return false;
+      }
+        
     }
 
     /**
@@ -57,7 +76,13 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
      * @return string|null code
      */
     public function getCode() {
-        return  "123";
+        
+        $code = $this->data->
+                children()->InitializePaymentWSResponse->
+                children()->res->
+                children()->resCode;
+        
+        return $code;
     }
 
     /**
@@ -67,7 +92,15 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
      */
     public function getTransactionReference() {
 
-        return "456";
+        if(isset($this->data->children()->InitializePaymentWSResponse))
+        {
+            $transId = $this->data->
+                    children()->InitializePaymentWSResponse->
+                    children()->t;
+
+            return $transId;
+      } 
+        
     }
 
     /**
@@ -77,7 +110,11 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
      */
     public function getMessage() {
         if ($this->isSuccessful()) {
-            return "Approved";
+            $message = $this->data->
+                       children("ns2", true)->initializePaymentWSResponse->
+                       children()->result->resultMsg;
+            
+            return $message; 
         }
         return $this->getError();
     }
@@ -88,7 +125,12 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
      * @return string
      */
     public function getError() {
-        return "Error";
+        
+        $message = $this->data->
+                       children("ns2", true)->initializePaymentWSResponse->
+                       children()->result->resultMsg;
+            
+        return $message;
     }
 
     /**
