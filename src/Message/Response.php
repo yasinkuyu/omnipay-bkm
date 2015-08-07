@@ -77,12 +77,16 @@ class Response extends AbstractResponse implements RedirectResponseInterface {
      */
     public function getCode() {
         
-        $code = $this->data->
-                children()->InitializePaymentWSResponse->
-                children()->res->
-                children()->resCode;
-        
-        return $code;
+        if(isset($this->data->children()->InitializePaymentWSResponse))
+        {
+            $code = $this->data->
+                    children()->InitializePaymentWSResponse->
+                    children()->res->
+                    children()->resCode;
+
+            return $code;
+      } 
+
     }
 
     /**
