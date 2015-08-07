@@ -18,10 +18,9 @@ use Omnipay\Common\Exception\InvalidResponseException;
 class Response extends AbstractResponse implements RedirectResponseInterface {
 
     /**
-     * Constructor
-     *
-     * @param  RequestInterface         $request
-     * @param  string                   $data / response data
+     * 
+     * @param RequestInterface $request
+     * @param type $data
      * @throws InvalidResponseException
      */
     public function __construct(RequestInterface $request, $data) {
