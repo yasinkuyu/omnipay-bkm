@@ -95,9 +95,9 @@ https://github.com/yasinkuyu/omnipay-iyzico
 Gvp (Garanti, Denizbank, TEB, ING, Şekerbank, TFKB) gateway for Omnipay payment processing library
 https://github.com/yasinkuyu/omnipay-gvp
 
-## BKM Express
-BKM Express gateway for Omnipay payment processing library
-https://github.com/yasinkuyu/omnipay-bkm
+## Postnet
+Posnet (Yapı Kredi, Vakıfbank, Anadolubank) gateway for Omnipay payment processing library
+https://github.com/yasinkuyu/omnipay-posnet
 
 ## Support
 
