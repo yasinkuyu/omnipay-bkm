@@ -87,7 +87,7 @@ PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of
 (İş Bankası, Akbank, Finansbank, Denizbank, Kuveytturk, Halkbank, Anadolubank, ING Bank, Citibank, Cardplus) gateway for Omnipay payment processing library
 https://github.com/yasinkuyu/omnipay-nestpay
 
-##Iyzico
+## Iyzico
 Iyzico gateway for Omnipay payment processing library
 https://github.com/yasinkuyu/omnipay-iyzico
 
@@ -98,6 +98,10 @@ https://github.com/yasinkuyu/omnipay-gvp
 ## Postnet
 Posnet (Yapı Kredi, Vakıfbank, Anadolubank) gateway for Omnipay payment processing library
 https://github.com/yasinkuyu/omnipay-posnet
+
+## Paratika
+Paratika (Asseco) (Akbank, TEB, Halkbank, Finansbank, İş Bankası, Şekerbank, Vakıfbank ) gateway for Omnipay payment processing library
+https://github.com/yasinkuyu/omnipay-paratika
 
 ## Support
 
